@@ -1,11 +1,12 @@
 #!/usr/bin/pythone
+"""
+this module contains tested unit for BaseModel
+"""
 from models.base_model import BaseModel
 from datetime import datetime
 import uuid
 import unittest
-"""
-this module contains tested unit for BaseModel
-"""
+
 
 class TestBaseModel(unittest.TestCase):
     """ The test base model class """
