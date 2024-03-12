@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-import datetime
-import uuid
 """
 This module contains the Baseclass
 """
+import datetime
+import uuid
 
 
 class BaseModel:
@@ -21,8 +21,7 @@ class BaseModel:
             .format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
-        """ Updates the public instance attribute U
-        pdated_at
+        """ Updates the public instance attribute updated_at
             with the current date time
         """
         self.updated_at = datetime.datetime.now()
