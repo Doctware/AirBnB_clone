@@ -11,6 +11,8 @@ class TestBaseModel(unittest.TestCase):
     def setUp(self):
         """ Set up instance for base model """
         self.baseM = BaseModel()
+        self.baseM.name = "My_First_Model"
+        self.baseM.my_number = 89
 
     def test_init(self):
         """
@@ -36,12 +38,24 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(O_dict['created_at'], self.baseM.created_at.isoformat())
         self.assertIn('updated_at', O_dict)
         self.assertEqual(O_dict['updated_at'], self.baseM.updated_at.isoformat())
+        self.assertEqual(O_dict['name'], 'My_First_Model')
+        self.assertEqual(O_dict['my_number'], 89)
 
     def test_str(self):
         """ Testing __str__ method """
         output = "[BaseModel] ({}) {}".\
             format(self.baseM.id, self.baseM.__dict__)
         self.assertEqual(str(self.baseM), output)
+
+    def test_init_with_dict(self):
+        """ testing init method along with dict """
+        O_dict = self.baseM.to_dict()
+        new_model = BaseModel(**O_dict)
+        self.assertEqual(new_model.id, self.baseM.id)
+        self.assertEqual(new_model.name, self.baseM.name)
+        self.assertEqual(new_model.my_number, self.baseM.my_number)
+        self.assertEqual(new_model.created_at, self.baseM.created_at)
+        self.assertEqual(new_model.updated_at, self.baseM.updated_at)
 
 if __name__ == "__main__":
     unittest.main()
