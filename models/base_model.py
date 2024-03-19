@@ -20,7 +20,7 @@ class BaseModel:
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """ returns a dictionary containing all keys/values of 
+        """ returns a dictionary containing all keys/values of
             __dict__ of the instance"""
         dict_obj = self.__dict__.copy()
         dict_obj['__class__'] = self.__class__.__name__
