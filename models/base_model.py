@@ -26,3 +26,11 @@ class BaseModel:
     def to_dict(self):
         """ Returns the dictionary contaning
             all key/value os __dict__ of instance """
+
+        to_dict = self.__dict__.copy()
+
+        to_dict['__class__'] = self.__class__.__name__
+        to_dict['created_at'] = self.datetime.datetime.isoformat()
+        to_dict['updated_at'] = self.datetime.datetime.isoformat()
+
+        return to_dict
