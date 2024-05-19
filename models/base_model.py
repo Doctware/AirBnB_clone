@@ -30,7 +30,7 @@ class BaseModel:
         to_dict = self.__dict__.copy()
 
         to_dict['__class__'] = self.__class__.__name__
-        to_dict['created_at'] = self.datetime.datetime.isoformat()
-        to_dict['updated_at'] = self.datetime.datetime.isoformat()
+        to_dict['created_at'] = self.created_at.isoformat()
+        to_dict['updated_at'] = self.updated_at.isoformat()
 
         return to_dict
