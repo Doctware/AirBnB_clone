@@ -22,6 +22,7 @@ class TestBaseModel(TestCase):
     def test_save(self):
         """ this method is testing the save method """
         original_created_at = self.bm.created_at
+        self.bm.save()
         self.assertGreater(self.bm.updated_at, original_created_at)
 
     def test_to_dict(self):
