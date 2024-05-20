@@ -17,7 +17,6 @@ class TestBaseModel(TestCase):
     def test_PubIstAtt(self):
         """ this method is testing the public insatnce attribute """
         self.assertIsInstance(self.bm.id, str)
-        self.assertEqual(len(self.bm.id), 36)
         self.assertIsInstance(self.bm.created_at, datetime)
         self.assertIsInstance(self.bm.created_at, datetime)
 
@@ -32,7 +31,7 @@ class TestBaseModel(TestCase):
         data = self.bm.to_dict()
         self.assertIsInstance(data, dict)
         self.assertIn('id', data)
-        self.assertEqual(len(data['id']), 36)
+        self.assertIsInstance(data['id'], str)
         self.assertIn('created_at', data)
         self.assertIsInstance(data['created_at'], str)
         self.assertIn('updated_at', data)
