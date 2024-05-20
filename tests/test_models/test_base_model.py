@@ -28,6 +28,13 @@ class TestBaseModel(TestCase):
         """ this method is testing to_dict method """
         data = self.bm.to_dict()
         self.assertIsInstance(data, dict)
+        self.assertIn('id', data)
+        self.assertEqual(len(data['id']), 36)
+        self.assertIn('created_at', data)
+        self.assertIsInstance(data['created_at'], str)
+        self.assertIn('updated_at', data)
+        self.assertIsInstance(data['updated_at'], str)
+        self.assertEqual(data['__class__'], self.bm.__class__.__name__)
 
 
 if __name__ == "__main__":
