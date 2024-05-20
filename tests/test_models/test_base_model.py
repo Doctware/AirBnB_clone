@@ -34,6 +34,7 @@ class TestBaseModel(TestCase):
         self.assertIsInstance(data['created_at'], str)
         self.assertIn('updated_at', data)
         self.assertIsInstance(data['updated_at'], str)
+        self.assertIn('__class__', data)
         self.assertEqual(data['__class__'], self.bm.__class__.__name__)
 
 
