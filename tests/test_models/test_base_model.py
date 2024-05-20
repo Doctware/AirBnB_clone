@@ -11,6 +11,8 @@ class TestBaseModel(TestCase):
 
     def setUp(self):
         self.bm = BaseModel()
+        self.bm.name = "My First Model"
+        self.bm.number = 89
 
     def test_PubIstAtt(self):
         """ this method is testing the public insatnce attribute """
@@ -37,6 +39,14 @@ class TestBaseModel(TestCase):
         self.assertIsInstance(data['updated_at'], str)
         self.assertIn('__class__', data)
         self.assertEqual(data['__class__'], self.bm.__class__.__name__)
+        self.assertEqual(data['name'], 'My First Model')
+        self.assertEqual(data['number'], 89)
+
+    def test_str(self):
+        """ this method test string output """
+        output = "[BaseModel] ({}) {}".\
+            format(self.bm.id, self.bm.__dict__)
+        self.assertEqual(str(self.bm), output)
 
 
 if __name__ == "__main__":
