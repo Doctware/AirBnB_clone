@@ -3,6 +3,7 @@
     thats defines all common attributs/imethod for other classes"""
 import uuid
 import datetime
+import models
 
 
 class BaseModel:
@@ -24,10 +25,12 @@ class BaseModel:
                 each value of this dictionary is the value
                 of the attribute name
         """
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.datetime.now()
+
         # do this if kwargs is not called
         if not kwargs:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.datetime.now()
+            models.storage.new(self)
 
         # do this if kwargs is called
         for key, value in kwargs.items():
@@ -46,7 +49,8 @@ class BaseModel:
     def save(self):
         """ Update the public instance attribute updated_at
             with the current datetime """
-        self.created_at = datetime.datetime.now()
+        self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """ Returns the dictionary contaning
