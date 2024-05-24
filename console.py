@@ -33,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
             save it to (the JSON file) and print the id
             Ex: $ create BaseModel """
 
-        class_name = arg.strip() # Remove leading/trailing white spase
+        class_name = arg.strip()
 
         if not class_name:
             print("** class name missing **")
@@ -50,6 +50,65 @@ class HBNBCommand(cmd.Cmd):
             except KeyError as e:
                 print(e)
 
+    def do_show(self, arg):
+        """
+        print the string representation of an instance base on
+        class name and id. Ex: ($: show BaseModel 1234-1234-1234)
+        """
+
+        args = arg.strip().split()  # split argument by white space
+
+        if not args:
+            print("** class name missing **")
+        else:
+            class_name, obj_id = args[0], None
+
+            if len(args) > 1:
+                obj_id = args[1]
+
+            try:
+                if not class_name:
+                    raise ValueError("** class name missing **")
+                if not obj_id:
+                    raise ValueError("** obj_id missing **")
+
+                obj = storage.all()
+                if not obj:
+                    raise ValueError("** no instance found **")
+
+                print(obj)
+            except ValueError as e:
+                print(e)
+
+    def do_destroy(self, arg):
+        """ delete an instance base on class name and id
+            then save the changes into a json file
+            Ex: ($: destroy BaseModel 1234-1234-1234)
+        """
+
+        args = arg.strip().split()
+
+        if not args:
+            print("** class name missing **")
+        else:
+            class_name, obj_id = args[0], None
+            if len(args) > 1:
+                obj_id = args[1]
+            try:
+                if not class_name:
+                    raise ValueError("** class name missing **")
+                if not obj_id:
+                    raise ValueError("** instance id missing **")
+
+                obj = storage.all()
+                if not obj:
+                    raise ValueError("** no instance found **")
+
+                del obj
+                storage.save()
+
+            except ValueError as e:
+                print(e)
 
 
 if __name__ == "__main__":
