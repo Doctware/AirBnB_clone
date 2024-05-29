@@ -13,6 +13,10 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
+    classes = {
+            'BaseModel': BaseModel
+    }
+
     def do_quit(self, arg):
         """ Quit command to exit the program """
         print("Exiting HBNB command interpreter")
@@ -102,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
                     raise ValueError("** instance id missing **")
 
                 instance_key = args[0] + '.' + args[1]
-                obj = storage.all()
+                obj = self.storage.all()
                 if instance_key not in obj:
                     raise ValueError("** no instance found **")
                 del obj[instance_key]
@@ -115,21 +119,16 @@ class HBNBCommand(cmd.Cmd):
         """print all str reprecentation of all instances based or
             not on the class name Ex: ($ all BaseModel or $ all)
         """
-        args = arg.strip().split()
-
-        obj = storage.all()
-
-        try:
-            class_name = args[0]
-            if args:
-                print(obj)
-            elif args[0]:
-                print(obj)
-            else:
-                raise ValueError("** class dosen't exist **")
-        except ValueError as e:
-            print(e)
-
+        if arg and arg not in HBNBCommand.classes:
+            print("** class dosen't exist **")
+            return
+        all_obj = storage.all()
+        if arg:
+            obj_list =\
+                [str(obj) for key, obj in all_obj.items() if key.startswith(arg)]
+        else:
+            obj_list = [str(obj) for obj in all_obj.values()]
+        print(obj_list)
 
     def do_update(self, arg):
         """
@@ -139,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
 
         Usege: update <class_name> <id> <attr name>"<attr value>"
         """
-        args =  args.strip().split()
+
 
 
 if __name__ == "__main__":
