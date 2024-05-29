@@ -72,11 +72,12 @@ class HBNBCommand(cmd.Cmd):
                 if not obj_id:
                     raise ValueError("** obj_id missing **")
 
+                instance_key = args[0] + '.' + args[1]
                 obj = storage.all()
-                if not obj:
+                if instance_key not in obj:
                     raise ValueError("** no instance found **")
+                print(obj[instance_key])
 
-                print(obj)
             except ValueError as e:
                 print(e)
 
@@ -100,15 +101,45 @@ class HBNBCommand(cmd.Cmd):
                 if not obj_id:
                     raise ValueError("** instance id missing **")
 
+                instance_key = args[0] + '.' + args[1]
                 obj = storage.all()
-                if not obj:
+                if instance_key not in obj:
                     raise ValueError("** no instance found **")
-
-                del obj
+                del obj[instance_key]
                 storage.save()
 
             except ValueError as e:
                 print(e)
+
+    def do_all(self, arg):
+        """print all str reprecentation of all instances based or
+            not on the class name Ex: ($ all BaseModel or $ all)
+        """
+        args = arg.strip().split()
+
+        obj = storage.all()
+
+        try:
+            class_name = args[0]
+            if args:
+                print(obj)
+            elif args[0]:
+                print(obj)
+            else:
+                raise ValueError("** class dosen't exist **")
+        except ValueError as e:
+            print(e)
+
+
+    def do_update(self, arg):
+        """
+        Updates an instance base o the class name and id
+        by adding or updating attribute  (save the changed into JSON file)
+        Ex ($ update BaseModel 1234-1234-1234 email"aibnb@gmail.com")
+
+        Usege: update <class_name> <id> <attr name>"<attr value>"
+        """
+        args =  args.strip().split()
 
 
 if __name__ == "__main__":
