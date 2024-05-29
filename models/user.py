@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ this module contains the user class """
-from base_model import BaseModel
+from models.base_model import BaseModel
 
 
-class User(BaseMode):
+class User(BaseModel):
     """ the class user thats inherits from BaseModel """
 
     email = ""
