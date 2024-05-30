@@ -43,13 +43,15 @@ class UserTestCase(unittest.TestCase):
     def test_user_to_dict(self):
         """ testing dic method for user """
         us_dict = self.us.to_dict()
-        self.assertEqual(us_dcit[__class__], User)
+        self.assertEqual(us_dictt[__class__], User)
         self.assertEqual(us_dict['last_name'], "")
         self.assertEqual(us_dict['first_name'], "")
         self.assertEqual(us_dict['email'], "")
         self.assertEqual(us_dict['password'], "")
         self.assertIsInstance(us_dict['created-at'], str)
-        self.assertIinsta
+        self.assertIsInstance(us_dict['Updated_at'], str)
+        self.assertEqual(to_dict['created_at'], self.us.datetime.isoformat())
+        self.assertEqual(to_dict['updated_at'], self.us.datetime.isoformat())
 
 
 if __name__ == "__main__":
