@@ -40,18 +40,20 @@ class UserTestCase(unittest.TestCase):
         self.assertIn("[User] ({})".format(self.us.id), string)
         self.assertIn("'id': '{}'".format(self.us.id), string)
 
+       
     def test_user_to_dict(self):
-        """ testing dic method for user """
+        """Test the to_dict method of User."""
         us_dict = self.us.to_dict()
-        self.assertEqual(us_dict[__class__], User)
-        self.assertEqual(us_dict['last_name'], "")
-        self.assertEqual(us_dict['first_name'], "")
+        self.assertEqual(us_dict['__class__'], 'User')
         self.assertEqual(us_dict['email'], "")
         self.assertEqual(us_dict['password'], "")
-        self.assertIsInstance(us_dict['created-at'], str)
-        self.assertIsInstance(us_dict['Updated_at'], str)
-        self.assertEqual(to_dict['created_at'], self.us.datetime.isoformat())
-        self.assertEqual(to_dict['updated_at'], self.us.datetime.isoformat())
+        self.assertEqual(us_dict['first_name'], "")
+        self.assertEqual(us_dict['last_name'], "")
+        self.assertIsInstance(us_dict['created_at'], str)
+        self.assertIsInstance(us_dict['updated_at'], str)
+        self.assertEqual(us_dict['created_at'], self.us.created_at.isoformat())
+        self.assertEqual(us_dict['updated_at'], self.us.updated_at.isoformat())
+ 
 
 
 if __name__ == "__main__":
