@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""  This module contains the base class
-    thats defines all common attributs/imethod for other classes"""
+"""  This module contains the base class 
+    thats defines all common attributs/imethod for other classes """
 import uuid
 import datetime
 import models

@@ -45,6 +45,9 @@ class UserTestCase(unittest.TestCase):
         """Test the to_dict method of User."""
         us_dict = self.us.to_dict()
         self.assertEqual(us_dict['__class__'], 'User')
+        self.assertEqual(us_dict['__class__'], User)
+        self.assertEqual(us_dict['last_name'], "")
+        self.assertEqual(us_dict['first_name'], "")
         self.assertEqual(us_dict['email'], "")
         self.assertEqual(us_dict['password'], "")
         self.assertEqual(us_dict['first_name'], "")
