@@ -43,7 +43,7 @@ class UserTestCase(unittest.TestCase):
     def test_user_to_dict(self):
         """ testing dic method for user """
         us_dict = self.us.to_dict()
-        self.assertEqual(us_dictt[__class__], User)
+        self.assertEqual(us_dict[__class__], User)
         self.assertEqual(us_dict['last_name'], "")
         self.assertEqual(us_dict['first_name'], "")
         self.assertEqual(us_dict['email'], "")
