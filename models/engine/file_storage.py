@@ -2,6 +2,7 @@
 """ This module contains the Class FileStorage """
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -14,7 +15,7 @@ class FileStorage:
         """ this method returns dictonary __object """
         return self.__objects.copy()
 
-    def new(self, obj):
+    def new(self, obj) -> None:
         """ this method set in __object the obj with key
             <obj class name>.id """
 
@@ -25,8 +26,11 @@ class FileStorage:
         """ this method is udes to serialized __objects the JSON file
             (paht: __file_path) """
 
-        with open(self.__file_path, "w") as file:
-            json.dump([obj.to_dict() for obj in self.__objects.values()], file)
+        obj_dict = {}
+        for key, obj in self.__objects.items():
+            obj_dict[key] = obj.to_dict()
+        with open(__file_path, "w") as file:
+            json.dump(obj_dict, file)
 
     def reload(self) -> None:
         """ method thats diserialze obj """
