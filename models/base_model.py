@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""  This module contains the base class 
+"""  This module contains the base class
     thats defines all common attributs/imethod for other classes """
 import uuid
 import datetime
@@ -16,7 +16,7 @@ class BaseModel:
 
             assign current datetime to public instance atribute 'created_at'
             assign current datetime to public instance atribute 'updated_at'
-            
+
             args: (Unused arguments)
 
             Using kwargs:
@@ -25,21 +25,19 @@ class BaseModel:
                 each value of this dictionary is the value
                 of the attribute name
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-
-        # do this if kwargs is not called
-        if not kwargs:
-            models.storage.new(self)
 
         # do this if kwargs is called
-        for key, value in kwargs.items():
-            if key != "__class__":
-                if key in ['created_at', 'updated_at']:
-                    value = datetime.datetime.fromisoformat(value)
-                setattr(self, key, value)
-
-        self.updated_at = datetime.datetime.now()
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != "__class__":
+                    if key in ['created_at', 'updated_at']:
+                        value = datetime.datetime.fromisoformat(value)
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = self.created_at
+            models.storage.new(self)
 
     def __str__(self):
         """ Print BaseModel information according to formati"""
