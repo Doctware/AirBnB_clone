@@ -3,6 +3,6 @@
 from models.base_model import BaseModel
 
 
-class Amenity(BaseMosel):
+class Amenity(BaseModel):
     """ the class Amenity """
     name = ""
