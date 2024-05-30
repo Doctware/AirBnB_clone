@@ -138,7 +138,36 @@ class HBNBCommand(cmd.Cmd):
 
         Usege: update <class_name> <id> <attr name>"<attr value>"
         """
-
+        args = arg.split()
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        if args[0] not in HBNBCommand.classes:
+            print("**class dosen't exist **")
+            return
+        if len(args) == 1:
+            print("** instance is missing **")
+            return
+        instance_key = args[0] + '.' + args[1]
+        all_obj = storage.all()
+        if instance_key not in all_obj:
+            print("** no instance found **")
+            return
+        if len(args) == 2:
+            print("** attribute name missing **")
+            return
+        if len(args) == 3:
+            print("** value missing **")
+            return
+        attr_name = args[2]
+        attr_value = args[3].strip('\"')
+        obj = all_obj[instance_key]
+        try:
+            attr_type = type(getattr(obj, attr_name))
+            setattr(obj, atrr_name, attr_type[attr_value])
+        except AttributeError:
+            setattr(obj, attr_name, attr_value)
+        storage.save()
 
 
 if __name__ == "__main__":
