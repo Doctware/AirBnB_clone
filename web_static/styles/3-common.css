@@ -6,7 +6,7 @@ body {
 	flex-direction: column;
 	color: #484848;
 	font-size: 14px;
-	font-family: circular, "Helvetica", Helvetica, Arial, sans-serif
+	font-family: circular, "Helvetica", Helvetica, Arial, sans-serif;
 }
 .content {
         flex: 1;
