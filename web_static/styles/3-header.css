@@ -3,6 +3,9 @@ header {
 	height: 70px;
 	width: 100%;
 	border-bottom: 1px #cccccc;
+	display: flex;
+	align-items: center;
+	padding-left: 50px
 }
 .logo {
 	background-image: url('../images/logo.png');
