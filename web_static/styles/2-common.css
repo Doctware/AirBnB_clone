@@ -3,7 +3,10 @@ body {
 	padding: 0;
 	display: flex;
 	min-height: 100vh;
-	flex-direction: column
+	flex-direction: column;
+	font-color: #484848;
+	font-size: 14px;
+	font-family: circular, "Helvetica", Helvetica, Arial, sans-serif
 }
 .content {
         flex: 1;
