@@ -7,6 +7,8 @@
 	position: relative;
 	align-items: center;
 	justify-content: flex-end;
+	border-radius: 4px;
+	display: flex;
 }
 .sh-btn {
 	font-size: 18px;
@@ -14,14 +16,16 @@
 	text: #FFFFFF;
 	height: 48px;
 	width: 20%;
-	border: None;
+	border: none;
 	display: flex;
 	border-radius: 4px;
 	align-items: center;
 	justify-content: center;
 	position: absolute;
-	margin-right: 30px;
+	right: 30px;
 	cursor: pointer;
+	position: absolute;
+	opacity: 1;
 }
 
 .sh-btn:hover {
