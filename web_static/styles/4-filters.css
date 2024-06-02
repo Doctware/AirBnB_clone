@@ -6,6 +6,7 @@
         border-radius: 14px;
 	position: relative;
 	align-items: center;
+	justify-content: flex-end;
 }
 .sh-btn {
 	font-size: 18px;
