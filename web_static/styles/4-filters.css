@@ -1,0 +1,27 @@
+.filters {
+        background: #FFFFFF;
+        height: 70px;
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        border-radius: 14px;
+	position: relative:
+}
+.sh-btn {
+	font-size: 18px;
+	background-color: #FF5A5F;
+	text: #FFFFFF;
+	height: 48px;
+	width: 20%;
+	border: None;
+	display: flex;
+	border-radius: 4px;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	margin-right: 30px;
+	cursor: pointer;
+}
+
+.sh-btn:hover {
+	opacity: 0.9;
+}
