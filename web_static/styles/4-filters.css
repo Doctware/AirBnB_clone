@@ -5,6 +5,7 @@
         border: 1px solid #DDDDDD;
         border-radius: 14px;
 	position: relative;
+	align-items: right;
 }
 .sh-btn {
 	font-size: 18px;
