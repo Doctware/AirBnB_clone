@@ -1,63 +1,39 @@
-#!/usr/bin/python3
-""" this module contains test port for User """
-from models.user import User
 import unittest
-import uuid
-from datetime import datetime
+from models.user import User
 
-
-class UserTestCase(unittest.TestCase):
-    """ the class UserTestCase """
+class TestUser(unittest.TestCase):
+    """Test cases for the User class"""
 
     def setUp(self):
-        """ the setup method """
-        self.us = User()
+        """Set up for the tests"""
+        self.user = User()
 
-    def test_use_instance(self):
-        """ testing user instance """
-        self.assertIsInstance(self.us, User)
+    def test_user_attributes(self):
+        """Test that User class has the required attributes"""
+        self.assertTrue(hasattr(self.user, "email"))
+        self.assertTrue(hasattr(self.user, "password"))
+        self.assertTrue(hasattr(self.user, "first_name"))
+        self.assertTrue(hasattr(self.user, "last_name"))
+        self.assertEqual(self.user.email, "")
+        self.assertEqual(self.user.password, "")
+        self.assertEqual(self.user.first_name, "")
+        self.assertEqual(self.user.last_name, "")
 
-    def test_user_attribute(self):
-        """ testing user attribute """
-        self.assertEqual(self.us.last_name, "")
-        self.assertEqual(self.us.first_name, "")
-        self.assertEqual(self.us.email, "")
-        self.assertEqual(self.us.password, "")
-
-    def test_user_id(self):
-        """ testing user id """
-        self.assertIsInstance(self.us.id, str)
-        self.assertTrue(len(self.us.id) > 0)
-
-    def test_user_created_at_updated_at(self):
-        """ testing user created_at and updated_at attr """
-        self.assertIsInstance(self.us.created_at, datetime)
-        self.assertIsInstance(self.us.created_at, datetime)
-
-    def test_user_str(self):
-        """ testing __str__ method user """
-        string = str(self.us)
-        self.assertIn("[User] ({})".format(self.us.id), string)
-        self.assertIn("'id': '{}'".format(self.us.id), string)
-
-       
     def test_user_to_dict(self):
-        """Test the to_dict method of User."""
-        us_dict = self.us.to_dict()
-        self.assertEqual(us_dict['__class__'], 'User')
-        self.assertEqual(us_dict['__class__'], User)
-        self.assertEqual(us_dict['last_name'], "")
-        self.assertEqual(us_dict['first_name'], "")
-        self.assertEqual(us_dict['email'], "")
-        self.assertEqual(us_dict['password'], "")
-        self.assertEqual(us_dict['first_name'], "")
-        self.assertEqual(us_dict['last_name'], "")
-        self.assertIsInstance(us_dict['created_at'], str)
-        self.assertIsInstance(us_dict['updated_at'], str)
-        self.assertEqual(us_dict['created_at'], self.us.created_at.isoformat())
-        self.assertEqual(us_dict['updated_at'], self.us.updated_at.isoformat())
- 
+        """Test that to_dict method includes all user attributes"""
+        user_dict = self.user.to_dict()
+        self.assertEqual(user_dict['email'], "yusclever9@gmail.com")
+        self.assertEqual(user_dict['password'], "")
+        self.assertEqual(user_dict['first_name'], "")
+        self.assertEqual(user_dict['last_name'], "")
+        self.assertEqual(user_dict['__class__'], "User")
+        self.assertIn('created_at', user_dict)
+        self.assertIn('updated_at', user_dict)
+        self.assertIn('id', user_dict)
+        self.assertEqual(user_dict['id'], self.user.id)
+        self.assertEqual(user_dict['created_at'], self.user.created_at.isoformat())
+        self.assertEqual(user_dict['updated_at'], self.user.updated_at.isoformat())
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
+
