@@ -6,7 +6,7 @@
 	border-radius: 14px;
 	position: relative;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: center;
 	border-radius: 4px;
 	display: flex;
 }
@@ -17,7 +17,7 @@
 	width: 25%;
 	box-sizing: border-box;
 	padding: 10px;
-
+	padding-left: 25px;
 }
 
 .locations {
@@ -25,7 +25,7 @@
 }
 
 .locations h3, .amenities h3 {
-	font-weight: 600;
+	font: 600;
 	margin: 0 0 5px 0;
 
 }
@@ -52,6 +52,7 @@
 }
 .popover li {
 	padding: 5px 0;
+	list-style: none;
 }
 
 .popover h2 {
