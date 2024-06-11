@@ -1,19 +1,18 @@
 .filters {
-        background: #FFFFFF;
+        background-color: #FFFFFF;
         height: 70px;
         width: 100%;
         border: 1px solid #DDDDDD;
         border-radius: 14px;
 	position: relative;
 	align-items: center;
-	justify-content: flex-end;
 	border-radius: 4px;
 	display: flex;
 }
 .sh-btn {
 	font-size: 18px;
 	background-color: #FF5A5F;
-	text: #FFFFFF;
+	color: #FFFFFF;
 	height: 48px;
 	width: 20%;
 	border: none;
